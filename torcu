@@ -1,0 +1,1 @@
+This is attemp to create a model. Accuracy is 0.98, I am suspecting overfitting. Its training with 30 epoches, but very slow. There is still not testing.
