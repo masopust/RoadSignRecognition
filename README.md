@@ -2,9 +2,9 @@
 Python final project
 ## ToDo List
 - [x] Choose technologies
-- [ ] Preprocess DB
-- [ ] Recognition if there is a road sign or not
-- [ ] Recognition of shape
-- [ ] Recognition of road sign type
+- [x] Preprocess DB
+- [x] Recognition of road sign type
+- [x] Statistics
+- [x] Labels
 - [ ] Road sign detection
 - [ ] Write tests
