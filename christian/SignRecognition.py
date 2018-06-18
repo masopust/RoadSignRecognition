@@ -13,8 +13,8 @@ from keras.optimizers import SGD
 from keras.callbacks import LearningRateScheduler, ModelCheckpoint
 
 
-NUM_CLASSES = 43
-IMG_SIZE = 48
+NUM_CLASSES = 62
+IMG_SIZE = 64
 
 
 def preprocess_img(img):
@@ -69,7 +69,7 @@ def cnn_model():
     model.add(Dense(NUM_CLASSES, activation='softmax'))
     return model
 
-root_dir = 'GTSRB\\Final_Training\\Images\\'
+root_dir = 'DATASET\\Training\\'
 imgs = []
 labels = []
 
