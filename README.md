@@ -57,8 +57,15 @@ Test accuracy | 95% | | 92%
 Steps per epoch | nr of items in training set | nr of items in training set| 110
 Learning curve Accuracy |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_acc.png" width="240" height="200" />  | |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_acc.png" width="240" height="200" /> 
 Learning curve Loss|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_loss.png" width="240" height="200" />  | |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_loss.png" width="240" height="200" /> 
+Learning curve Top 5 Accuracy| | | <img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_acc_top5.png" width="240" height="200" /> 
+### Confusion matrix
+* Masopust's model
+<img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_conf.png" /> 
+ 
+* Gierlach's model
+<img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_conf.png" /> 
 
-## Script to classify Road Sign
+## Script to classifying the road sign
 ### Prerequisites
 You need Python 3.6, and Keras have installed. Download a model from this repository. 
 ### Running 
