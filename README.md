@@ -33,6 +33,8 @@ When the model is designed, it must be compiled. There the [optimizer](https://k
 
 [Here](https://cambridgespark.com/content/tutorials/convolutional-neural-networks-with-keras/index.html) is nice tutorial about CNN concept.
 
+Keras allows to make the image augementation, for examaple by rotating them, to increase effectiveness of learning. By setting the number of batches, the data is taken in smaller packages, so memory is seved. In that case there are to ways of setting nr of samples per epoch. First way: nr of training items/nr of batches, second way: nr_of_training_items - default. The second approach takes more time, but gives better results. 
+
 ### Something about evaluation
 
 * Learning curve - shows how goes learning in each epoch. On y-axis are shown statistical metrics defined while compiling the model. 
@@ -49,7 +51,20 @@ opimizer | adam | sgd | nadam
 diagram|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_model.png" width="240" height="700" />|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/riva_model.png" width="240" height="850" />|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_model.png" width="240" height="700" />
 
 ## Evaluation of our models
+name | Masopust's model | Riva's model | Gierlach's model 
+---|     :---:     |     :---:    |      :---:  
+Test accuracy | 95% | | 92%
+Steps per epoch | nr of items in training set | nr of items in training set| 110
+Learning curve Accuracy |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_acc.png" width="240" height="200" />  | |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_acc.png" width="240" height="200" /> 
+Learning curve Loss|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_loss.png" width="240" height="200" />  | |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_loss.png" width="240" height="200" /> 
 
+## Script to classify Road Sign
+### Prerequisites
+You need Python 3.6, and Keras have installed. Download a model from this repository. 
+### Running 
+'''
+python3 
+'''
 ## Detection of road signs 
 
 ## Authors
