@@ -42,6 +42,11 @@ When the model is designed, it must be compiled. There the [optimizer](https://k
 * Loss - error of matching, commonly used: mean squared error
 
 ## Comparison of different models
+name | Masopust's model | Riva's model | Gierlach's model 
+---|     :---:     |     :---:    |      :---:    
+nr of epochs| 15 | 30 | 20
+opimizer | adam | sgd | nadam 
+diagram|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_model.png" width="240" height="700" />|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/riva_model.png" width="240" height="850" />|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_model.png" width="240" height="700" />
 
 ## Evaluation of our models
 
