@@ -7,7 +7,7 @@ There are four different models of CNN network. We all used keras library to tra
 Data is taken from: [BelgiumTS Dataset](http://btsd.ethz.ch/shareddata/). There are two sets: Training and Testing. Our data-sets contains 62 class of different road signs. To get realistic learning curve, the training data was split to smaller training file and validation set. The validation set do not take part in training process. It is only used to made an evaluation during learning. The Testing data-set is used to evaluate data after training. To split data use script: [split_set.py](https://github.com/masopust/RoadSignRecognition/blob/master/gierlach/split_set.py) or use function 'split_dataset_into_test_and_train_sets', defined [here](https://colab.research.google.com/drive/1Hkcl_DUWo7M8bEhXMOydrRw5F3Np4-vP#scrollTo=uWLv9ig2ajjK). 
 Below are shown histograms of numerosity of each class.
 
-<img src="https://github.com/masopust/RoadSignRecognition/blob/master/Histogram%20of%20testing%20dataset.png" width="270" height="200" />   <img src="https://github.com/masopust/RoadSignRecognition/blob/master/Histogram%20of%20training%20dataset.png" width="270" height="200" />    <img src="https://github.com/masopust/RoadSignRecognition/blob/master/Histogram%20of%20validation%20dataset.png" width="270" height="200" />
+<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/Histogram%20of%20testing%20dataset.png" width="270" height="200" />   <img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/Histogram%20of%20training%20dataset.png" width="270" height="200" />    <img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/Histogram%20of%20validation%20dataset.png" width="270" height="200" />
 
 
 Data was loaded using very handy method implemented in keras named flow_from_directory. It takes data from file and prepare labels for each classes based on names of subdirectories.
@@ -40,22 +40,22 @@ name | Masopust's model | Riva's model | Gierlach's model | Torcu's model
 ---|     :---:     |     :---:    |      :---:    |      :---:    
 nr of epochs| 15 | 30 | 20 | x
 opimizer | adam | sgd | nadam | rmsprop
-diagram|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_model.png" width="240" height="700" />|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/riva_model.png" width="240" height="850" />|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_model.png" width="240" height="700" /> | x
+diagram|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/masopust_model.png" width="240" height="700" />|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/riva_model.png" width="240" height="850" />|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/gierlach_model.png" width="240" height="700" /> | x
 
 ## Evaluation of our models
 name | Masopust's model | Riva's model | Gierlach's model | Torcu's model
 ---|     :---:     |     :---:    |      :---:    |      :---:  
 Test accuracy | 92.6% | 96% | 92% | 
 Steps per epoch | nr of items in training set | nr of items in training set| 110 | x
-Learning curve Accuracy |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_acc.png" width="240" height="200" />  | |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_acc.png" width="240" height="200" /> | 
-Learning curve Loss|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_loss.png" width="240" height="200" />  | |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_loss.png" width="240" height="200" /> | 
-Learning curve Top 5 Accuracy| | | <img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_acc_top5.png" width="240" height="200" /> | 
+Learning curve Accuracy |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/masopust_acc.png" width="240" height="200" />  | |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/gierlach_acc.png" width="240" height="200" /> | 
+Learning curve Loss|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/masopust_loss.png" width="240" height="200" />  | |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/gierlach_loss.png" width="240" height="200" /> | 
+Learning curve Top 5 Accuracy| <img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/masopust_acc_top5.png" width="240" height="200" /> | | <img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/gierlach_acc_top5.png" width="240" height="200" /> | 
 ### Confusion matrix
 * Masopust's model
-<img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_conf.png" /> 
+<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/masopust_conf.png" /> 
  
 * Gierlach's model
-<img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_conf.png" /> 
+<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/gierlach_conf.png" /> 
 
 ## Script to classifying the road sign - recognize.py
 ### Prerequisites
