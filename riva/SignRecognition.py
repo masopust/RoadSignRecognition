@@ -8,14 +8,18 @@ from keras.layers.convolutional import Conv2D
 from keras.layers.pooling import MaxPooling2D
 from keras.optimizers import SGD
 from keras import backend as K
+#K.set_image_dim_ordering('tf')
 K.set_image_data_format('channels_first')
 from keras.optimizers import SGD
 from keras.callbacks import LearningRateScheduler, ModelCheckpoint
+from keras.preprocessing.image import ImageDataGenerator
+from sklearn.cross_validation import train_test_split
 
 
 NUM_CLASSES = 62
 IMG_SIZE = 64
-
+batch_size = 32
+epochs = 30
 
 def preprocess_img(img):
     # Histogram normalization in v channel
@@ -44,21 +48,17 @@ def get_class(img_path):
 def cnn_model():
     model = Sequential()
 
-    model.add(Conv2D(32, (3, 3), padding='same',
-                     input_shape=(3, IMG_SIZE, IMG_SIZE),
-                     activation='relu'))
+    model.add(Conv2D(32, (3, 3), padding='same', input_shape=(3, IMG_SIZE, IMG_SIZE), activation='relu'))
     model.add(Conv2D(32, (3, 3), activation='relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(0.2))
 
-    model.add(Conv2D(64, (3, 3), padding='same',
-                     activation='relu'))
+    model.add(Conv2D(64, (3, 3), padding='same', activation='relu'))
     model.add(Conv2D(64, (3, 3), activation='relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(0.2))
 
-    model.add(Conv2D(128, (3, 3), padding='same',
-                     activation='relu'))
+    model.add(Conv2D(128, (3, 3), padding='same', activation='relu'))
     model.add(Conv2D(128, (3, 3), activation='relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(0.2))
@@ -96,9 +96,7 @@ model.compile(loss='categorical_crossentropy',
 def lr_schedule(epoch):
     return lr * (0.1 ** int(epoch / 10))
 
-batch_size = 32
-epochs = 30
-
+'''
 model.fit(X, Y,
           batch_size=batch_size,
           epochs=epochs,
@@ -106,3 +104,32 @@ model.fit(X, Y,
           callbacks=[LearningRateScheduler(lr_schedule),
                      ModelCheckpoint('model.h5', save_best_only=True)]
           )
+'''
+################
+
+X_train, X_val, Y_train, Y_val = train_test_split(X, Y, test_size=0.2, random_state=42)
+
+datagen = ImageDataGenerator(featurewise_center=False,
+                             featurewise_std_normalization=False,
+                             width_shift_range=0.1,
+                             height_shift_range=0.1,
+                             zoom_range=0.2,
+                             shear_range=0.1,
+                             rotation_range=10.)
+
+datagen.fit(X_train)
+
+# Reinitialize model and compile
+model = cnn_model()
+model.compile(loss='categorical_crossentropy',
+              optimizer=sgd,
+              metrics=['accuracy'])
+
+# Train again
+model.fit_generator(datagen.flow(X_train, Y_train, batch_size=batch_size),
+                    steps_per_epoch=X_train.shape[0],
+                    epochs=epochs,
+                    validation_data=(X_val, Y_val),
+                    callbacks=[LearningRateScheduler(lr_schedule),
+                               ModelCheckpoint('model2.h5', save_best_only=True)]
+                    )

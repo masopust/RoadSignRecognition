@@ -38,5 +38,5 @@ y_pred = model.predict_classes(X_test)
 acc = np.sum(y_pred == y_test) / np.size(y_pred)
 print("Test accuracy = {}".format(acc))
 
-cnf_matrix = confusion_matrix(y_test, model.predict(X_test, verbose = 1))
-plot_confusion_matrix(cnf_matrix, list(range(0, 62)), True)
+cnf_matrix = confusion_matrix(y_test, y_pred)
+plot_confusion_matrix(cnf_matrix, labels, True)
