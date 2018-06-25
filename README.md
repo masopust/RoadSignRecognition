@@ -36,20 +36,20 @@ Keras allows to make the image augementation, for examaple by rotating them, to 
 * Loss - error of matching, commonly used: mean squared error
 
 ## Comparison of different models
-name | Masopust's model | Riva's model | Gierlach's model 
----|     :---:     |     :---:    |      :---:    
-nr of epochs| 15 | 30 | 20
-opimizer | adam | sgd | nadam 
-diagram|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_model.png" width="240" height="700" />|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/riva_model.png" width="240" height="850" />|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_model.png" width="240" height="700" />
+name | Masopust's model | Riva's model | Gierlach's model | Torcu's model
+---|     :---:     |     :---:    |      :---:    |      :---:    
+nr of epochs| 15 | 30 | 20 | x
+opimizer | adam | sgd | nadam | rmsprop
+diagram|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_model.png" width="240" height="700" />|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/riva_model.png" width="240" height="850" />|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_model.png" width="240" height="700" /> | x
 
 ## Evaluation of our models
-name | Masopust's model | Riva's model | Gierlach's model 
----|     :---:     |     :---:    |      :---:  
-Test accuracy | 92.6% | | 92%
-Steps per epoch | nr of items in training set | nr of items in training set| 110
-Learning curve Accuracy |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_acc.png" width="240" height="200" />  | |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_acc.png" width="240" height="200" /> 
-Learning curve Loss|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_loss.png" width="240" height="200" />  | |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_loss.png" width="240" height="200" /> 
-Learning curve Top 5 Accuracy| | | <img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_acc_top5.png" width="240" height="200" /> 
+name | Masopust's model | Riva's model | Gierlach's model | Torcu's model
+---|     :---:     |     :---:    |      :---:    |      :---:  
+Test accuracy | 92.6% | 96% | 92% | 
+Steps per epoch | nr of items in training set | nr of items in training set| 110 | x
+Learning curve Accuracy |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_acc.png" width="240" height="200" />  | |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_acc.png" width="240" height="200" /> | 
+Learning curve Loss|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_loss.png" width="240" height="200" />  | |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_loss.png" width="240" height="200" /> | 
+Learning curve Top 5 Accuracy| | | <img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_acc_top5.png" width="240" height="200" /> | 
 ### Confusion matrix
 * Masopust's model
 <img src="https://github.com/masopust/RoadSignRecognition/blob/master/masopust_conf.png" /> 
@@ -57,12 +57,12 @@ Learning curve Top 5 Accuracy| | | <img src="https://github.com/masopust/RoadSig
 * Gierlach's model
 <img src="https://github.com/masopust/RoadSignRecognition/blob/master/gierlach_conf.png" /> 
 
-## Script to classifying the road sign
+## Script to classifying the road sign - recognize.py
 ### Prerequisites
-You need Python 3.6, and Keras have installed. Download a model from this repository. 
+You need to Python 3.6, Keras and NumPy have installed. Download a model from this repository. 
 ### Running 
 '''
-python3 
+python recognize.py picture_file.jpg -m model.h5
 '''
 ## Detection of road signs 
 
