@@ -71,16 +71,18 @@ recognize.py \[-h] \[-m [MODEL]] file
 
 Road sign recognition (classification) based on model created by Keras library.
 
-Obligatory arguments:
-  file                  the name of the image file with road sign
+**Obligatory arguments:**
 
-Optional arguments:
-  -h, --help                        show this help message and exit
-  -m \[MODEL], --model \[MODEL]     the name of the h5 file with the model, default value is classifier.h5
+  file                  the name of the image file with road sign  
+
+**Optional arguments:**
+
+  -h, --help                    show this help message and exit  
+  -m \[MODEL], --model \[MODEL] the name of the h5 file with the model, default value is classifier.h5  
   
 ## Detection of road signs 
 
-Original idea was to build also second part of project, detecting of road signs on the photo or video by YOLO library.
+Original idea was to build also second part of project, detecting of road signs on the photo or video by YOLO library.  
 But finally it is not a part of our project, we want to try it on summer holiday.
 
 ## Authors
