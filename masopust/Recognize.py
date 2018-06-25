@@ -8,11 +8,23 @@ def main():
 
     parser = argparse.ArgumentParser(
         description='Road sign recognition (classification) based on model created e.g. by Keras library.')
-    parser.add_argument("-m", "--model", type=str, nargs='?', const='classifier.h5', default='classifier.h5', help="the name of the h5 file with the model")
-    parser.add_argument("file", type=str, help="the name of the image file with road sign")
+    parser.add_argument("-m", "--model", type=str, nargs='?', const='classifier.h5', default='classifier.h5', help="the name of the h5 file with the model, default value is classifier.h5")
+    parser.add_argument("file", type=str, help="the name of the image file with road sign (obligatory)")
     args = parser.parse_args()
 
-    model = load_model(args.model)
+    try:
+        model = load_model(args.model)
+    except FileNotFoundError:
+        print("recognize: ", args.model, ": No such file of Model")
+        sys.exit()
+    except PermissionError:
+        print("recognize:", args.model, ": Permission to Model denied")
+        sys.exit()
+    except IsADirectoryError:
+        print("recognize:", args.model, ": Is Directory but not Model")
+        print("0\t0\t0 ", args.model)
+        sys.exit()
+
     labels = ["Uneven road", "Speed bump", "Slippery road", "Dangerous curve to the left",
               "Dangerous curve to the right", "Double dangerous curve to the left",
               "Double dangerous curve to the right", "Presence of children", "Bicycle crossing", "Cattle crossing",
@@ -35,12 +47,25 @@ def main():
               "Beginning of a residential area", "End of a residential area", "One way traffic", "Dead end",
               "End of road works", "Pedestrian crosswalk", "Bicycles and mopeds crossing", "Parking ahead",
               "Speed bump", "End of priority road", "Priority road"]
-    test_image = image.load_img(args.file, target_size=(64, 64))
+
+    try:
+        test_image = image.load_img(args.file, target_size=(64, 64))
+    except FileNotFoundError:
+        print("recognize: ", args.file, ": No such file or directory")
+        sys.exit()
+    except PermissionError:
+        print("recognize:", args.file, ": Permission denied")
+        sys.exit()
+    except IsADirectoryError:
+        print("recognize:", args.file, ": Is Directory")
+        print("0\t0\t0 ", args.file)
+        sys.exit()
+
     test_image = image.img_to_array(test_image)
     test_image = np.expand_dims(test_image, axis=0)
     result = model.predict(test_image)
     y_pred = np.argmax(result, axis=-1)
-    print(labels[int(y_pred)])
+    print("Road sign recognized as ", labels[int(y_pred)])
 
 if __name__ == '__main__':
     main()
