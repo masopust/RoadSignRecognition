@@ -1,3 +1,3 @@
 
 
-Test accuracy = 0.959920634920635
+Test accuracy = 0.9861111111111112
