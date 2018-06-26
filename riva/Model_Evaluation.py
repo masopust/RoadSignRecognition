@@ -5,10 +5,11 @@ from keras import backend as K
 K.set_image_data_format('channels_first')
 import pandas as pd
 from ConfusionMatrix import plot_confusion_matrix
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix
 from keras.models import load_model
 from SignRecognition import preprocess_img
 import glob
+from matplotlib import pylab
 
 #test = pd.read_csv('DATASET\\GT-final_test.csv', sep=';')
 model = load_model('model.h5')
@@ -38,5 +39,27 @@ y_pred = model.predict_classes(X_test)
 acc = np.sum(y_pred == y_test) / np.size(y_pred)
 print("Test accuracy = {}".format(acc))
 
+#
+from keras.preprocessing.image import ImageDataGenerator
+train_datagen = ImageDataGenerator(rescale=1. / 255, shear_range=0.2, zoom_range=0.2, horizontal_flip=True)
+test_datagen = ImageDataGenerator(rescale=1. / 255)
+training_set = train_datagen.flow_from_directory('DATASET\\Training\\', target_size=(64, 64), batch_size=1, class_mode='categorical')
+test_set = test_datagen.flow_from_directory('DATASET\\Testing\\', target_size=(64, 64), batch_size=1, shuffle = False, class_mode='categorical')
+
+#plot Training Dataset Histogram
+import matplotlib.pyplot as plt
+plt.clf()
+plt.hist(training_set.classes, bins='auto')
+plt.title("Training Dataset Histogram")
+plt.savefig('Training_Dataset_Histogram.png')
+
+#plot Test Dataset Histogram
+import matplotlib.pyplot as plt
+plt.clf()
+plt.hist(test_set.classes, bins='auto')
+plt.title("Test Dataset Histogram")
+plt.savefig('Test_Dataset_Histogram.png')
+
+#CONFUSION MATRIX
 cnf_matrix = confusion_matrix(y_test, y_pred)
 plot_confusion_matrix(cnf_matrix, labels, True)
