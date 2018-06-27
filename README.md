@@ -40,16 +40,16 @@ name | Masopust's model | Riva's model | Gierlach's model | Torcu's model
 ---|     :---:     |     :---:    |      :---:    |      :---:    
 nr of epochs| 15 | 30 | 20 | 30
 opimizer | adam | sgd | nadam | rmsprop
-diagram|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/masopust_model.png" width="240" height="700" />|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/riva_model.png" width="240" height="850" />|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/gierlach_model.png" width="240" height="700" /> | x
+diagram|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/masopust_model.png" width="240" height="700" />|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/riva_model.png" width="240" height="850" />|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/gierlach_model.png" width="240" height="700" /> | NA
 
 ## Evaluation of our models
 name | Masopust's model | Riva's model | Gierlach's model | Torcu's model
 ---|     :---:     |     :---:    |      :---:    |      :---:  
 Test accuracy | 92.6% | 96% | 92% | 98%
-Steps per epoch | nr of items in training set | nr of items in training set| 110 | x
-Learning curve Accuracy |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/masopust_acc.png" width="240" height="200" />  | |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/gierlach_acc.png" width="240" height="200" /> | 
-Learning curve Loss|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/masopust_loss.png" width="240" height="200" />  | |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/gierlach_loss.png" width="240" height="200" /> | 
-Learning curve Top 5 Accuracy| <img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/masopust_acc_top5.png" width="240" height="200" /> | | <img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/gierlach_acc_top5.png" width="240" height="200" /> | 
+Steps per epoch | nr of items in training set | nr of items in training set| 110 | NA
+Learning curve Accuracy |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/masopust_acc.png" width="240" height="200" />  | NA |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/gierlach_acc.png" width="240" height="200" /> | <img src="https://github.com/masopust/RoadSignRecognition/master/torcu/train_acc%20vs%20val_acc.png" width="240" height="200" />
+Learning curve Loss|<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/masopust_loss.png" width="240" height="200" />  | NA |<img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/gierlach_loss.png" width="240" height="200" /> | <img src="https://github.com/masopust/RoadSignRecognition/blob/master/torcu/train_loss%20vs%20val_loss.png" width="240" height="200" />
+Learning curve Top 5 Accuracy| <img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/masopust_acc_top5.png" width="240" height="200" /> | NA | <img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/gierlach_acc_top5.png" width="240" height="200" /> | <img src="https://github.com/masopust/RoadSignRecognition/blob/master/torcu/Accuracy_top5.png" width="240" height="200" />
 ### Confusion matrix
 * Masopust's model
 <img src="https://github.com/masopust/RoadSignRecognition/blob/master/images/masopust_conf.png" /> 
